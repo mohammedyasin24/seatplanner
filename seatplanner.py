@@ -2,7 +2,7 @@
 #This code is released under GPL v3.So feel free to modify and distribute.
 #Author:Mahesh C
 #Release date:4-April-2010
-#Version-Beta 0.2
+
 
 
 
@@ -23,7 +23,7 @@ from random import *
 
 
 
-app = QApplication(sys.argv)
+
 
 columnMax=16
 yseekMax=500
@@ -686,8 +686,7 @@ class Gui(QWidget):
         return (size,room)
 
 
+app = QApplication(sys.argv)
 widget=Gui()
 widget.show()
-
-
 sys.exit(app.exec_())
