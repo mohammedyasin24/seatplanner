@@ -385,35 +385,40 @@ class Gui(QWidget):
                                 print "end of bwd",i,j
                             b_finished=1
                         else:
-                            if j%2!=0 :
+                            if j%2!=0 and f_finished==0:
                                 if debug==1:
-                                    print "bwd in",j,bwi,"appending data",[slist[bwi][0],slist[bwi][1],slist[bwi][2]]
+                                    print "bwd in odd",j,bwi,"appending data",[slist[bwi][0],slist[bwi][1],slist[bwi][2]]
                                 room[1][j][k]=[slist[bwi][0],slist[bwi][1],slist[bwi][2]]
                                 sallocList.append([slist[bwi][0],slist[bwi][1],slist[bwi][2],str(roomName)])
                                 bwi=bwi-1
+                                continue
                         if fwi>fw_max-1:
                             if debug==1:
                                 print "end of fwd",i,j
                             f_finished=1
                         else:
-                            if j%2==0 or b_finished==1:
+                            if j%2==0 and b_finished==0:
                                 if debug==1:
-                                    print "fwd in",j,fwi,"appending data",[slist[fwi][0],slist[fwi][1],slist[fwi][2]]
+                                    print "fwd in even",j,fwi,"appending data",[slist[fwi][0],slist[fwi][1],slist[fwi][2]]
                                 room[1][j][k]=[slist[fwi][0],slist[fwi][1],slist[fwi][2]]
                                 sallocList.append([slist[fwi][0],slist[fwi][1],slist[fwi][2],str(roomName)])
                                 fwi=fwi+1
-                        if f_finished==1:
+                                continue
+                        if f_finished==1 and  b_finished==0:
                                 if debug==1:
-                                    print "bwd in",j,bwi,"appending data",[slist[bwi][0],slist[bwi][1],slist[bwi][2]]
+                                    print "bwd in fwd_finished",j,bwi,"appending data",[slist[bwi][0],slist[bwi][1],slist[bwi][2]]
                                 room[1][j][k]=[slist[bwi][0],slist[bwi][1],slist[bwi][2]]
                                 sallocList.append([slist[bwi][0],slist[bwi][1],slist[bwi][2],str(roomName)])
                                 bwi=bwi-1
-                        if b_finished==1:
+                                continue
+                                
+                        if b_finished==1 and f_finished==0:
                                 if debug==1:
-                                    print "fwd in",j,fwi,"appending data",[slist[fwi][0],slist[fwi][1],slist[fwi][2]]
+                                    print "fwd in bwd_finished",j,fwi,"appending data",[slist[fwi][0],slist[fwi][1],slist[fwi][2]]
                                 room[1][j][k]=[slist[fwi][0],slist[fwi][1],slist[fwi][2]]
                                 sallocList.append([slist[fwi][0],slist[fwi][1],slist[fwi][2],str(roomName)])
                                 fwi=fwi+1
+                                continue
                         
                         if f_finished==1 and b_finished==1:
                             room[1][j][k]="EM"
