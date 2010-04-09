@@ -27,7 +27,7 @@ from random import *
 
 columnMax=16
 yseekMax=500
-debug=1
+debug=0
 rev_stud_list=1
 
 #Main Gui class
@@ -694,7 +694,7 @@ class Gui(QWidget):
                     to=sfrom
                 for j in range(int(sfrom),int(to)+1):
                     slist.append([str(className),j,i])
-            if rev_stud_list==1:
+            if rev_stud_list==1 and self.shuffle==1:
                 if len(slist)%2==0:
                     fw_max=len(slist)/2
                     bwd_max=len(slist)/2
